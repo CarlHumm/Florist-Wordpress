@@ -12,9 +12,13 @@
                                         <p class="section-content">
                                         {{post.sectiontext ? post.sectiontext : "Lorem Ipsum"}}
                                         </p>
-                                        {% if is_front %}
-                                        <a href="{{TimberPost('post-3').link}}" class="btn btn-primary"> Find our Shop </a>
-                                        {% endif %}                                        </div>
+                                {% if is_front %}
+                                        {% set contact = TimberPost('contact') %}
+                                        {% if contact %}
+                                                <a href="{{ contact.link }}" class="btn btn-primary">Find our Shop</a>
+                                        {% endif %}
+                                {% endif %}
+                                </div>
                                 </div>
                                 <div class="col-md-5">
                                         <div class="image-area image-medium">

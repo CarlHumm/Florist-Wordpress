@@ -2,12 +2,16 @@
   "name": "new-seasons",
   "version": "1.0.0",
   "description": "Case study project",
+  "browserslist": [
+    "last 2 versions"
+  ],
   "main": "index.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp --gulpfile gulpfile.mjs"
   },
   "repository": {
     "type": "git",
@@ -20,11 +24,12 @@
   },
   "homepage": "https://github.com/timber/starter-theme#readme",
   "devDependencies": {
-    "browser-sync": "^2.26.7",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^6.1.0",
+    "browser-sync": "^3.0.4",
+    "gulp": "^5.0.1",
+    "gulp-autoprefixer": "^9.0.0",
     "gulp-clean-css": "^4.2.0",
-    "gulp-sass": "^4.0.2"
+    "gulp-dart-sass": "^1.1.0",
+    "sass": "^1.89.1"
   },
   "dependencies": {
     "aos": "^2.3.4",

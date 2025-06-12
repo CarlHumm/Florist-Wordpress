@@ -84,11 +84,12 @@
 .nav-main {
     display:flex;
     justify-content:flex-start;
+    flex-direction: column;
     align-items:center;
     padding-left:2rem;
     position:absolute;
     z-index:0;
-    height: 80vh;
+    height: 500px;
     opacity: 1;
     background: #111;
     width:100%;
@@ -124,8 +125,8 @@ a {
 
 @media screen and (min-width:800px) {
     .header {
-        height:150px;
-        padding:2rem 0;
+        min-height:150px;
+        padding:0.8rem 0;
     }
 
 
@@ -142,8 +143,9 @@ a {
     }
 
     .nav-main {
-        display:block !important;
+        display: flex !important;
         position:relative;
+        flex-direction: row;
         opacity: 1 !important;
         top: 0;
         height: 100% !important;
@@ -153,8 +155,9 @@ a {
         ul {
             display:flex;
             flex-direction:row;
-            justify-content:space-around;
+            justify-content: flex-end;
             width:600px;
+            gap: 2rem;
             margin: 0 auto;
             li {
                 display:inline;

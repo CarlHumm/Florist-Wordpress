@@ -136,8 +136,15 @@
 align-items:flex-start !important;
 }
 
-.swiper-button-next, .swiper-button-previous {
-    color: purple;
+
+#testimonials {
+.swiper-button-next {
+    background-image:url('../../img/swiper-button-next.svg');
+}
+
+.swiper-button-prev {
+    background-image:url('../../img/swiper-button-previous.svg');
+}
 }
 
 .swiper-slide-active {

@@ -32,16 +32,15 @@ function wpb_adding_scripts() {
 	add_action( 'wp_enqueue_scripts', 'wpb_adding_scripts' );  
 
 
-if ( ! class_exists( 'Timber' ) ) {
-	add_action( 'admin_notices', function() {
-		echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php' ) ) . '</a></p></div>';
-	});
-
-	add_filter('template_include', function( $template ) {
-		return get_stylesheet_directory() . '/static/no-timber.html';
-	});
-
-	return;
+// Load Composer
+if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+    require_once __DIR__ . '/vendor/autoload.php';
+    $timber = new Timber\Timber();
+} else {
+    add_action( 'admin_notices', function() {
+        echo '<div class="error"><p><strong>Timber not loaded.</strong> Please run <code>composer install</code> in the theme directory.</p></div>';
+    });
+    return;
 }
 
 /**
@@ -76,13 +75,10 @@ class NewSeasons extends Timber\Site {
 		parent::__construct();
 	}
 
-	/** This is where you can register custom post types. */
 	public function register_post_types() {
 
-
-
 		// SERVICES
-		register_post_type( 'services',
+		register_post_type( 'service',
 			array(
 				'labels' => array(
 					'name' => __( 'service' ),
@@ -92,13 +88,13 @@ class NewSeasons extends Timber\Site {
 				'has_archive' => true,
 				'show_in_rest' => true,
 				'rewrite' => array('slug' => 'services'),
-				'supports' => array( 'title', 'thumbnail' )
+				'supports' => array( 'title', 'thumbnail', 'editor' )
 				
 			)
 		);
 		
 		// OCCASSIONS
-		register_post_type( 'occassions',
+		register_post_type( 'occassion',
 			array(
 				'labels' => array(
 					'name' => __( 'occassion' ),
@@ -107,12 +103,12 @@ class NewSeasons extends Timber\Site {
 				'public' => true,
 				'has_archive' => true,
 				'rewrite' => array('slug' => 'ocassion'),
-				'supports' => array( 'title', 'thumbnail' ),
+				'supports' => array( 'title', 'thumbnail', 'editor' ),
 			)
 		);
 
 		// TESTIMONIALS
-		register_post_type( 'testimonials',
+		register_post_type( 'testimonial',
 			array(
 				'labels' => array(
 					'name' => __( 'testimonial' ),

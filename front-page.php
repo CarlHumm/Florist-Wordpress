@@ -1,9 +1,10 @@
 <?php
 $context = Timber::get_context();
 $post = new TimberPost();
+$context['is_front'] = true;
 $args = array(
     // Get post type project
-    'post_type' => 'services',
+    'post_type' => 'service',
     // Get all posts
     'posts_per_page' => 3,
     // Order by post date
@@ -13,7 +14,7 @@ $args = array(
 
 $occassions = array(
     // Get post type project
-    'post_type' => 'occassions',
+    'post_type' => 'occassion',
     // Get all posts
     'posts_per_page' => -1,
     // Order by post date
@@ -23,7 +24,7 @@ $occassions = array(
 
 $testimonials = array(
     // Get post type project
-    'post_type' => 'testimonials',
+    'post_type' => 'testimonial',
     // Get all posts
     'posts_per_page' => -1,
     // Order by post date
